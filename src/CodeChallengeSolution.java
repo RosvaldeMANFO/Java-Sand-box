@@ -1,8 +1,4 @@
-import kotlin.collections.builders.MapBuilder;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
 
 public class CodeChallengeSolution {
 
