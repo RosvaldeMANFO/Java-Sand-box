@@ -4,6 +4,28 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+
+/**
+ * AudioPlayer
+ * <p>
+ * Plays audio files using the `javax.sound.sampled` API and provides a simple
+ * interactive console for basic controls (play, stop, reset, quit).
+ * <p>
+ * The constructor opens an `AudioInputStream` and prepares a `Clip` for
+ * playback. The `on()` method runs a blocking interactive menu that accepts
+ * the following commands from standard input:
+ *  - P : Play
+ *  - S : Stop
+ *  - R : Reset to start
+ *  - Q : Quit
+ * <p>
+ * Notes:
+ *  - Supported file formats depend on `AudioSystem.getAudioInputStream`.
+ *  - Errors during loading or playback are logged to standard output.
+ *  - This class is not thread-safe and is intended for single-threaded,
+ *    interactive use. Consider adding explicit resource cleanup if used
+ *    in long-running applications.
+ */
 public class AudioPlayer {
     private Clip clip;
 
@@ -27,6 +49,10 @@ public class AudioPlayer {
         }
     }
 
+    /**
+     * This function only start a kind of mp3 musing player
+     * and provides a set of control on song playing
+     */
     public void on(){
         System.out.println("Welcome to the Audio Player!");
         try(Scanner scanner = new Scanner(System.in)){
@@ -51,5 +77,13 @@ public class AudioPlayer {
         }catch (Exception e){
             System.out.println("An error occurred while running the audio player.");
         }
+    }
+
+    public void start(){
+        clip.start();
+    }
+
+    public void stop(){
+        clip.stop();
     }
 }
